@@ -1,0 +1,22 @@
+{
+  "combo_wet_fart": {
+    "category": "player",
+    "sounds": ["poopmc-mod:combo_wet_fart"]
+  },
+  "diarrhea": {
+    "category": "player",
+    "sounds": ["poopmc-mod:diarrhea"]
+  },
+  "fart_big_drop": {
+    "category": "player",
+    "sounds": ["poopmc-mod:fart_big_drop"]
+  },
+  "long_fart": {
+    "category": "player",
+    "sounds": ["poopmc-mod:long_fart"]
+  },
+  "tiny_nugget_drop": {
+    "category": "player",
+    "sounds": ["poopmc-mod:tiny_nugget_drop"]
+  }
+}
