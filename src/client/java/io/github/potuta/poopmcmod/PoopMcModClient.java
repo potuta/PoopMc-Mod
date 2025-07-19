@@ -52,26 +52,27 @@ public class PoopMcModClient implements ClientModInitializer {
 		shakeScreen(client, poopSounds[randIndex].getDurationSecs() * 1000);
 	}
 
-	private void setPlayerCrouch(MinecraftClient client, int durationMilis) {
+	private void setPlayerCrouch(MinecraftClient client, int durationMillis) {
 		new Thread(() -> {
 			client.options.sneakKey.setPressed(true);
 			try {
-				Thread.sleep(durationMilis);
+				Thread.sleep(durationMillis);
 			} catch (InterruptedException ignored) {}
 			client.options.sneakKey.setPressed(false);
 		}).start();
 	}
 
-	private void shakeScreen(MinecraftClient client, int durationMilis) {
+	private void shakeScreen(MinecraftClient client, int durationMillis) {
 		new Thread(() -> {
-			long end = System.currentTimeMillis() + durationMilis;
+			long end = System.currentTimeMillis() + durationMillis;
 			while (System.currentTimeMillis() < end) {
 				client.execute(() -> {
-					client.cameraEntity.setBodyYaw((float)(Math.random() - 0.5) * 2);
+					float intensity = Math.min(durationMillis / 1000f, 3.0f); // max shake cap
+					client.cameraEntity.setBodyYaw((float)(Math.random() - 0.5) * intensity);
 					client.cameraEntity.setPitch((float)(Math.random() - 0.5) * 2);
 				});
 				try {
-					Thread.sleep(durationMilis);
+					Thread.sleep(50);
 				} catch (InterruptedException ignored) {}
 			}
 			client.execute(() -> {
